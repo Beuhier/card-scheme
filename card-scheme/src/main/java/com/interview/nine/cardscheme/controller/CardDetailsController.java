@@ -31,7 +31,7 @@ public class CardDetailsController {
 
 	@GetMapping(path = "stats", produces = {MediaType.APPLICATION_JSON_VALUE })
 	@ResponseBody
-	public ResponseEntity getAllDrinks(@RequestParam(value = "start", defaultValue = "0") int start,
+	public ResponseEntity getStatistics(@RequestParam(value = "start", defaultValue = "0") int start,
 			@RequestParam(value = "limit", defaultValue = "25") int limit) {
 		return new ResponseEntity<>(service.getCardStats(start, limit), HttpStatus.OK);
 	}
