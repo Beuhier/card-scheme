@@ -18,7 +18,7 @@ import com.interview.nine.cardscheme.responses.InfoResponse;
 @ControllerAdvice
 public class AppExceptionHandler {
 
-	@ExceptionHandler(value = { CardInfoServiceException.class })
+	@ExceptionHandler(value = {CardInfoServiceException.class })
 	public ResponseEntity<Object> userServiceExceptionHandler(CardInfoServiceException ex, WebRequest request) {
 		ErrorMessage errorMessage = new ErrorMessage(new Date(), ex.getMessage());
 		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.INTERNAL_SERVER_ERROR);
@@ -32,7 +32,7 @@ public class AppExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 	
-	@ExceptionHandler(value = { Exception.class })
+	@ExceptionHandler(value = {Exception.class })
 	public ResponseEntity<Object> otherExceptionHandler(Exception ex, WebRequest request) {
 		ErrorMessage errorMessage = new ErrorMessage(new Date(), ex.getMessage());
 		return new ResponseEntity<>(errorMessage, new HttpHeaders(), HttpStatus.NOT_FOUND);
