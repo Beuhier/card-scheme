@@ -73,7 +73,7 @@ public class CardDetailsInfoServiceImpl implements CardDetailsInfoService {
 	 * 
 	 */
 	@Async
-	InfoResponse cardInfo(String number) {
+	private InfoResponse cardInfo(String number) {
 		int nums = 0;
 		String num = validateInput(number);
 		CardInfo info = repo.findByCardNumber(num);
@@ -111,7 +111,7 @@ public class CardDetailsInfoServiceImpl implements CardDetailsInfoService {
 	}
 
 	@Async
-	StatsResponse getAllCardStats(int start, int limit) {
+	private StatsResponse getAllCardStats(int start, int limit) {
 		Map<String, Integer> payload = new HashMap<>();
 		StatsResponse response = new StatsResponse();
 		if (start > 0)

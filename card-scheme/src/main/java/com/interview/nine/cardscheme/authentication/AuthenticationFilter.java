@@ -30,17 +30,17 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 		final String timeStampHeader = request.getHeader("timeStamp");
 		final String appKeyHeader = request.getHeader("appKey");
 		
-		//if(!checkMessageRequestIsNull(authorizationHeader,timeStampHeader,appKeyHeader)) {
-			//((HttpServletResponse) response).sendError(HttpServletResponse.SC_BAD_REQUEST, ErrorMessages.INVALID_MESSAGE.getErrorMessages());
-			//return;
-		//}
+		if(!checkMessageRequestIsNull(authorizationHeader,timeStampHeader,appKeyHeader)) {
+			((HttpServletResponse) response).sendError(HttpServletResponse.SC_BAD_REQUEST, ErrorMessages.INVALID_MESSAGE.getErrorMessages());
+			return;
+		}
 		
 		// This should check for key validity, but i am commenting out because the result of my Hash process using 
 		// timestamp + app
-		//if(!validateKey(authorizationHeader,timeStampHeader,appKeyHeader)) {
+		if(!validateKey(authorizationHeader,timeStampHeader,appKeyHeader)) {
 			//((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, ErrorMessages.INVALID_KEY.getErrorMessages());
 			//return;
-		//}
+		}
 		
 			filterChain.doFilter(request,response);
 	}
